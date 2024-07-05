@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  password    String
+  name        String
+  enrollments Enrollment[]
+  progresses  Progress[]
+  examResults ExamResult[]
+}
+
+model Course {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  modules     Module[]
+  enrollments Enrollment[]
+}
+
+model Module {
+  id       Int     @id @default(autoincrement())
+  title    String
+  course   Course  @relation(fields: [courseId], references: [id])
+  courseId Int
+  videos   Video[]
+  exams    Exam[]
+}
+
+model Video {
+  id         Int        @id @default(autoincrement())
+  title      String
+  url        String
+  module     Module     @relation(fields: [moduleId], references: [id])
+  moduleId   Int
+  progresses Progress[]
+}
+
+model Enrollment {
+  id       Int    @id @default(autoincrement())
+  user     User   @relation(fields: [userId], references: [id])
+  userId   Int
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId Int
+}
+
+model Progress {
+  id        Int     @id @default(autoincrement())
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int
+  video     Video   @relation(fields: [videoId], references: [id])
+  videoId   Int
+  completed Boolean @default(false)
+}
+
+model Exam {
+  id          Int          @id @default(autoincrement())
+  title       String
+  module      Module       @relation(fields: [moduleId], references: [id])
+  moduleId    Int
+  questions   String // JSON or any format to store questions
+  examResults ExamResult[]
+}
+
+model ExamResult {
+  id     Int     @id @default(autoincrement())
+  exam   Exam    @relation(fields: [examId], references: [id])
+  examId Int
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int
+  score  Float
+  passed Boolean
+}
