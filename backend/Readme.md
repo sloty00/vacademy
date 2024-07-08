@@ -25,27 +25,3 @@ El patrón Repository es una arquitectura de software que se utiliza comúnmente
 ### Integración de Swagger y Paginación
 
 Para documentar y facilitar el acceso a la API del backend de VAcademy, se ha implementado Swagger. Además, se ha incorporado lógica de paginación en las rutas que devuelven listados de recursos, como cursos y usuarios, para mejorar el rendimiento y la navegación dentro de la plataforma.
-
-## Frontend (En desarrollo)
-
-El frontend de VAcademy está desarrollado con React.js y utiliza Framer Motion para animaciones interactivas. Proporciona una interfaz de usuario moderna y fluida para que los usuarios puedan explorar cursos, enrolarse, y seguir su progreso educativo.
-
-### Frontend: Arquitectura de Componentes.
-
-En el frontend de VAcademy, se utilizará una arquitectura basada en componentes, común en el desarrollo de aplicaciones React:
-
-Componentes Reutilizables: Divide la interfaz de usuario en componentes pequeños y reutilizables que representan partes específicas de la interfaz.
-- Separación de Responsabilidades: Cada componente tiene su propia lógica y presentación, lo que facilita el mantenimiento y la modificación.
-- Gestión de Estado: Puede utilizar Context API, Redux u otros estados de gestión para manejar el estado de la aplicación de manera global o local en los componentes.
-- Flujo de Datos Unidireccional: Sigue un patrón de flujo de datos unidireccional, donde los datos fluyen desde los componentes principales a los secundarios mediante props o context.
-- En el frontend de VAcademy, los componentes React se organizarán de manera que cada uno cumpla con una función específica dentro de la interfaz de usuario. Se utilizará Framer Motion para animaciones y transiciones fluidas entre componentes, mejorando la experiencia de usuario.
-
-Estos principios arquitecturales ayudarán a mantener un código modular, escalable y fácil de mantener tanto en el backend como en el frontend de tu proyecto Fullstack VAcademy.
-
-### Tecnologías Utilizadas
-
-- **React.js**: ![React.js](https://img.shields.io/badge/React.js-61DAFB?logo=react&logoColor=white)
-- **Framer Motion**: ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer&logoColor=white)
-- **Axios para llamadas a la API**: ![Axios](https://img.shields.io/badge/Axios-0095D5?logo=axios&logoColor=white)
-- **Context API (para gestión de estado)**: ![Context API](https://img.shields.io/badge/Context_API-3178C6?logo=react&logoColor=white)
-- **React Router (para enrutamiento)**: ![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=reactrouter&logoColor=white)
