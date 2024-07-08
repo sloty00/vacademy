@@ -13,7 +13,8 @@ const create = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const courses = await getAllCourses();
+    const { page = 1, limit = 10 } = req.query;
+    const courses = await getAllCourses(parseInt(page), parseInt(limit));
     res.status(200).json(courses);
   } catch (error) {
     res.status(500).json({ error: error.message });

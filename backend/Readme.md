@@ -1,98 +1,50 @@
-<!-- Project Title -->
-<h1 align="center">Backend de VAcademy</h1>
+# Protecto personal en ejecución Fullstack VAcademy
 
-<!-- Project Description -->
-<p align="center">
-  Este es el backend del proyecto VAcademy, una plataforma educativa desarrollada con Node.js, Express, y Prisma ORM.
-</p>
+## Descripción
 
-<!-- Shields -->
-<p align="center">
-  <img src="https://img.shields.io/badge/Node.js-v20.12.2-green" alt="Node.js Version">
-  <img src="https://img.shields.io/badge/Prisma-v5.16.1-blue" alt="Prisma Version">
-  <img src="https://img.shields.io/badge/MySQL-v3.10.2-blue" alt="MySQL Version">
-  <img src="https://img.shields.io/badge/License-ISC-yellow" alt="License">
-</p>
+Fullstack VAcademy es una plataforma educativa desarrollada para ofrecer cursos en línea con seguimiento de progreso y evaluaciones por módulos. Este repositorio contiene tanto el backend como el frontend del proyecto.
 
-<!-- Table of Contents -->
-## Contenido
+## Backend (Terminado)
 
-- [Requisitos](#requisitos)
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Seguridad](#seguridad)
-- [Contribución](#contribución)
-- [Licencia](#licencia)
+El backend de VAcademy está desarrollado con Node.js, Express.js, y Prisma ORM. Utiliza MySQL como base de datos y cuenta con funcionalidades como registro y autenticación de usuarios, gestión de cursos, módulos, videos, exámenes, y seguimiento de progreso de usuarios.
 
-<!-- Requirements -->
-## Requisitos
+### Backend: Patrón Repository.
 
-- Node.js
-- MySQL
-- Prisma ORM
-- Nodemon (solo para desarrollo)
+El patrón Repository es una arquitectura de software que se utiliza comúnmente en el desarrollo de aplicaciones backend para separar las capas de acceso a datos de la lógica de negocio. 
 
-<!-- Installation Instructions -->
-## Instalación
+### Tecnologías Utilizadas
 
-1. **Clona el repositorio:**
+- **Node.js**: ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+- **Express.js**: ![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)
+- **Prisma ORM**: ![Prisma ORM](https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white)
+- **MySQL**: ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+- **JWT para autenticación**: ![JWT](https://img.shields.io/badge/JWT-000000?logo=jsonwebtokens&logoColor=white)
+- **Encriptación de contraseñas con bcrypt**: ![bcrypt](https://img.shields.io/badge/bcrypt-007396?logo=npm&logoColor=white)
 
-   ```bash
-   git clone <url-del-repositorio>
-   cd backend
-   npm install
+### Integración de Swagger y Paginación
 
-2. **Configura las variables de entorno:**
+Para documentar y facilitar el acceso a la API del backend de VAcademy, se ha implementado Swagger. Además, se ha incorporado lógica de paginación en las rutas que devuelven listados de recursos, como cursos y usuarios, para mejorar el rendimiento y la navegación dentro de la plataforma.
 
-Crea un archivo .env en el directorio raíz del proyecto y agrega las siguientes variables:
+## Frontend (En desarrollo)
 
-   DATABASE_URL=mysql://username:password@localhost:3306/database_name
-   JWT_SECRET=your_jwt_secret_key
-   PORT=3000
+El frontend de VAcademy está desarrollado con React.js y utiliza Framer Motion para animaciones interactivas. Proporciona una interfaz de usuario moderna y fluida para que los usuarios puedan explorar cursos, enrolarse, y seguir su progreso educativo.
 
-Ajusta DATABASE_URL con tus credenciales de MySQL y el nombre de la base de datos.
+### Frontend: Arquitectura de Componentes.
 
-3.- Ejecuta las migraciones de Prisma:
+En el frontend de VAcademy, se utilizará una arquitectura basada en componentes, común en el desarrollo de aplicaciones React:
 
-Copiar código
-npx prisma migrate dev --name init
+Componentes Reutilizables: Divide la interfaz de usuario en componentes pequeños y reutilizables que representan partes específicas de la interfaz.
+- Separación de Responsabilidades: Cada componente tiene su propia lógica y presentación, lo que facilita el mantenimiento y la modificación.
+- Gestión de Estado: Puede utilizar Context API, Redux u otros estados de gestión para manejar el estado de la aplicación de manera global o local en los componentes.
+- Flujo de Datos Unidireccional: Sigue un patrón de flujo de datos unidireccional, donde los datos fluyen desde los componentes principales a los secundarios mediante props o context.
+- En el frontend de VAcademy, los componentes React se organizarán de manera que cada uno cumpla con una función específica dentro de la interfaz de usuario. Se utilizará Framer Motion para animaciones y transiciones fluidas entre componentes, mejorando la experiencia de usuario.
 
-Esto ejecutará las migraciones y creará las tablas necesarias en tu base de datos.
+Estos principios arquitecturales ayudarán a mantener un código modular, escalable y fácil de mantener tanto en el backend como en el frontend de tu proyecto Fullstack VAcademy.
 
-Uso
-Inicia el servidor:
+### Tecnologías Utilizadas
 
-Para desarrollo (con Nodemon):
-
-bash
-Copiar código
-npm run dev
-Para producción:
-
-bash
-Copiar código
-npm start
-Endpoints API:
-
-Registro y autenticación de usuarios
-Gestión de cursos, módulos, videos y exámenes
-Enrolamiento de usuarios en cursos
-Seguimiento de progreso de usuarios en módulos y videos
-<!-- Security -->
-Seguridad
-Se utiliza JWT para la autenticación y protección de rutas.
-Las contraseñas de los usuarios se almacenan en la base de datos encriptadas utilizando bcrypt.
-<!-- Contribution Guidelines -->
-Contribución
-Si quieres contribuir al proyecto, sigue estos pasos:
-
-Haz un fork del repositorio.
-Crea una rama para tu nueva funcionalidad (git checkout -b feature/nueva-funcionalidad).
-Realiza tus cambios y haz commit (git commit -am 'Añade nueva funcionalidad').
-Haz push a la rama (git push origin feature/nueva-funcionalidad).
-Crea un nuevo Pull Request.
-<!-- License Information -->
-Licencia
-Este proyecto está bajo la Licencia ISC.
-
-
+- **React.js**: ![React.js](https://img.shields.io/badge/React.js-61DAFB?logo=react&logoColor=white)
+- **Framer Motion**: ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer&logoColor=white)
+- **Axios para llamadas a la API**: ![Axios](https://img.shields.io/badge/Axios-0095D5?logo=axios&logoColor=white)
+- **Context API (para gestión de estado)**: ![Context API](https://img.shields.io/badge/Context_API-3178C6?logo=react&logoColor=white)
+- **React Router (para enrutamiento)**: ![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=reactrouter&logoColor=white)

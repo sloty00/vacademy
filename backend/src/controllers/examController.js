@@ -5,15 +5,14 @@ const examService = require('../services/examService');
 const createExam = async (req, res) => {
   try {
     const { moduleId } = req.params;
-    const examData = {
-      title: req.body.title,
-      questions: req.body.questions, // Ajusta según el formato que uses para las preguntas
-    };
+    const { title, questions } = req.body;
 
-    const exam = await examService.createExam(moduleId, examData);
+    const exam = await examService.createExam(moduleId, { title, questions });
+
     res.status(201).json(exam);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ error: `Error creating exam: ${error.message}` });
   }
 };
 
@@ -25,6 +24,7 @@ const getExamsByModuleId = async (req, res) => {
     const exams = await examService.getExamsByModuleId(moduleId);
     res.status(200).json(exams);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: error.message });
   }
 };

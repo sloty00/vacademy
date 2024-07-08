@@ -13,8 +13,12 @@ const createCourse = async (title, description) => {
   return course;
 };
 
-const getAllCourses = async () => {
-  const courses = await prisma.course.findMany();
+const getAllCourses = async (page, limit) => {
+  const offset = (page - 1) * limit;
+  const courses = await prisma.course.findMany({
+    skip: offset,
+    take: limit,
+  });
   return courses;
 };
 

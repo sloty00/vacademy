@@ -64,6 +64,8 @@ model Progress {
   video     Video   @relation(fields: [videoId], references: [id])
   videoId   Int
   completed Boolean @default(false)
+
+  @@unique([userId, videoId])
 }
 
 model Exam {
@@ -71,7 +73,7 @@ model Exam {
   title       String
   module      Module       @relation(fields: [moduleId], references: [id])
   moduleId    Int
-  questions   String // JSON or any format to store questions
+  questions   String
   examResults ExamResult[]
 }
 
