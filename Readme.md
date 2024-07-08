@@ -3,6 +3,7 @@
 ## Descripción
 
 Fullstack VAcademy es una plataforma educativa desarrollada para ofrecer cursos en línea con seguimiento de progreso y evaluaciones por módulos. Este repositorio contiene tanto el backend como el frontend del proyecto.
+Se adjunta el Video con la integracion del Swagger: https://youtu.be/irr8NVixNuM
 
 ## Backend (Terminado)
 
