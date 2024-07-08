@@ -20,6 +20,7 @@ El patrón Repository es una arquitectura de software que se utiliza comúnmente
 - **Prisma ORM**: ![Prisma ORM](https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white)
 - **MySQL**: ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 - **JWT para autenticación**: ![JWT](https://img.shields.io/badge/JWT-000000?logo=jsonwebtokens&logoColor=white)
+- **Swagger**: ![Swagger](https://img.shields.io/badge/Swagger-%2344AA99.svg?logo=swagger&logoColor=white)
 - **Encriptación de contraseñas con bcrypt**: ![bcrypt](https://img.shields.io/badge/bcrypt-007396?logo=npm&logoColor=white)
 
 ### Integración de Swagger y Paginación
