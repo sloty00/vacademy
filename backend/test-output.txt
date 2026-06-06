@@ -1,0 +1,6 @@
+
+> backend@1.0.0 test
+> node test-server.js
+
+Server is running on port 3000
+Servidor iniciado correctamente para el test
