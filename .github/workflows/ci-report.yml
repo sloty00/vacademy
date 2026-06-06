@@ -1,0 +1,68 @@
+name: CI Monitor VAcademy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-monitor:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v3
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Instalar y Testear en Backend
+      run: |
+        cd backend
+        npm install
+        # Ejecutamos el test de salud (Smoke Test)
+        # Si el servidor inicia bien, EXIT_CODE será 0
+        npm test > test-output.txt 2>&1 && EXIT_CODE=0 || EXIT_CODE=1
+        
+        # Generamos un JSON temporal de resultados basado en el test
+        if [ $EXIT_CODE -eq 0 ]; then
+          echo '{"numPassedTests": 1, "numFailedTests": 0, "numTotalTests": 1}' > test-results.json
+        else
+          echo '{"numPassedTests": 0, "numFailedTests": 1, "numTotalTests": 1}' > test-results.json
+        fi
+
+    - name: Generar reporte JSON final
+      if: always()
+      run: |
+        # Extraemos los valores del JSON creado en el paso anterior
+        EXITOSOS=$(node -e 'const r=require("./backend/test-results.json"); console.log(r.numPassedTests || 0)')
+        FALLIDOS=$(node -e 'const r=require("./backend/test-results.json"); console.log(r.numFailedTests || 0)')
+        TOTAL=$(node -e 'const r=require("./backend/test-results.json"); console.log(r.numTotalTests || 0)')
+
+        echo '{
+          "proyecto": "VAcademy",
+          "rama": "${{ github.ref_name }}",
+          "commit": "${{ github.sha }}",
+          "pipeline": {
+            "estado": "${{ job.status }}",
+            "fecha_ejecucion": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'"
+          },
+          "tests": {
+            "exitosos": '$EXITOSOS',
+            "fallidos": '$FALLIDOS',
+            "totales": '$TOTAL',
+            "cobertura_codigo": "N/A"
+          },
+          "detalles": "Test de salud ejecutado: Verificación de arranque de API."
+        }' > reporte-cicd.json
+
+    - name: Desplegar Reporte a GitHub Pages
+      if: always()
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: .
+        branch: gh-pages
