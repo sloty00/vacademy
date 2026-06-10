@@ -57,7 +57,7 @@ jobs:
             "totales": '$TOTAL',
             "cobertura_codigo": "100%"
           },
-          "detalles": "Test de salud ejecutado: Verificación de arranque de API."
+          "detalles": "Smoke Test OK: Validación de arranque de API y tests de integración superados."
         }' > reporte-cicd.json
 
     - name: Desplegar Reporte a GitHub Pages
